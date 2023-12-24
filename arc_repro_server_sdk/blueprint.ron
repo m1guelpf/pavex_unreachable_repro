@@ -1,0 +1,202 @@
+(
+    creation_location: (
+        line: 8,
+        column: 18,
+        file: "arc_repro/src/blueprint.rs",
+    ),
+    constructors: [
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "crate::dependency_with_arc",
+                ),
+                location: (
+                    line: 10,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: Singleton,
+            cloning_strategy: None,
+            error_handler: None,
+        ),
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::query::QueryParams::extract",
+                ),
+                location: (
+                    line: 23,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: RequestScoped,
+            cloning_strategy: None,
+            error_handler: Some((
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::query::errors::ExtractQueryParamsError::into_response",
+                ),
+                location: (
+                    line: 27,
+                    column: 6,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            )),
+        ),
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::route::RouteParams::extract",
+                ),
+                location: (
+                    line: 32,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: RequestScoped,
+            cloning_strategy: None,
+            error_handler: Some((
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::route::errors::ExtractRouteParamsError::into_response",
+                ),
+                location: (
+                    line: 36,
+                    column: 6,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            )),
+        ),
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::body::JsonBody::extract",
+                ),
+                location: (
+                    line: 41,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: RequestScoped,
+            cloning_strategy: None,
+            error_handler: Some((
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::body::errors::ExtractJsonBodyError::into_response",
+                ),
+                location: (
+                    line: 45,
+                    column: 6,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            )),
+        ),
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::body::BufferedBody::extract",
+                ),
+                location: (
+                    line: 48,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: RequestScoped,
+            cloning_strategy: None,
+            error_handler: Some((
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "pavex::request::body::errors::ExtractBufferedBodyError::into_response",
+                ),
+                location: (
+                    line: 52,
+                    column: 6,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            )),
+        ),
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "<pavex::request::body::BodySizeLimit as std::default::Default>::default",
+                ),
+                location: (
+                    line: 55,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: RequestScoped,
+            cloning_strategy: None,
+            error_handler: None,
+        ),
+        (
+            constructor: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "crate::telemetry::RootSpan::new",
+                ),
+                location: (
+                    line: 63,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            lifecycle: RequestScoped,
+            cloning_strategy: Some(CloneIfNecessary),
+            error_handler: None,
+        ),
+    ],
+    middlewares: [
+        (
+            middleware: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "crate::telemetry::logger",
+                ),
+                location: (
+                    line: 69,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            error_handler: None,
+        ),
+    ],
+    routes: [
+        (
+            path: "/api/ping",
+            method_guard: (
+                inner: Some((
+                    bitset: 256,
+                    extensions: [],
+                )),
+            ),
+            request_handler: (
+                callable: (
+                    registered_at: "arc_repro",
+                    import_path: "crate::routes::status::ping",
+                ),
+                location: (
+                    line: 16,
+                    column: 8,
+                    file: "arc_repro/src/blueprint.rs",
+                ),
+            ),
+            error_handler: None,
+        ),
+    ],
+    fallback_request_handler: None,
+    nested_blueprints: [],
+)

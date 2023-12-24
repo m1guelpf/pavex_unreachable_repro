@@ -6,6 +6,9 @@ use pavex::f;
 /// required by our API.
 pub fn blueprint() -> Blueprint {
     let mut bp = Blueprint::new();
+
+    bp.constructor(f!(crate::dependency_with_arc), Lifecycle::Singleton);
+
     register_common_constructors(&mut bp);
 
     add_telemetry_middleware(&mut bp);
