@@ -1,0 +1,7 @@
+[workspace]
+members = ["arc_repro", "arc_repro_server_sdk", "arc_repro_server"]
+# By setting `arc_repro_server` as the default member, `cargo run` will default to running the server binary
+# when executed from the root of the workspace.
+# Otherwise, you would have to use `cargo run --bin api` to run the server binary.
+default-members = ["arc_repro_server"]
+resolver = "2"
