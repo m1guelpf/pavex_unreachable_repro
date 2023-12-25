@@ -8,10 +8,10 @@ path = "src/bin/bp.rs"
 name = "bp"
 
 [dependencies]
+tracing = "0.1"
 cargo_px_env = "0.1"
 pavex = { git = "https://github.com/LukeMathWalker/pavex", branch = "main" }
 pavex_cli_client = { git = "https://github.com/LukeMathWalker/pavex", branch = "main" }
-tracing = "0.1"
 
 # Configuration
 serde = { version = "1", features = ["derive"] }
