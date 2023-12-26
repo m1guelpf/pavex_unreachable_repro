@@ -7,7 +7,11 @@ use pavex::f;
 pub fn blueprint() -> Blueprint {
     let mut bp = Blueprint::new();
 
-    bp.constructor(f!(crate::dependency_with_arc), Lifecycle::Singleton);
+    bp.constructor(f!(crate::build_shared_dep), Lifecycle::Singleton)
+        .cloning(CloningStrategy::CloneIfNecessary);
+
+    bp.constructor(f!(crate::MiddlewareDep::new), Lifecycle::RequestScoped);
+    bp.wrap(f!(crate::middleware));
 
     register_common_constructors(&mut bp);
 
