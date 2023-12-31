@@ -11,13 +11,19 @@ pub fn blueprint() -> Blueprint {
         .cloning(CloningStrategy::CloneIfNecessary);
 
     bp.constructor(f!(crate::MiddlewareDep::new), Lifecycle::RequestScoped);
-    bp.wrap(f!(crate::middleware));
+
+    let mut nested_bp = Blueprint::new();
+
+    nested_bp.wrap(f!(crate::middleware));
 
     register_common_constructors(&mut bp);
 
     add_telemetry_middleware(&mut bp);
 
-    bp.route(GET, "/api/ping", f!(crate::routes::status::ping));
+    nested_bp.route(GET, "/api/ping", f!(crate::routes::status::ping));
+
+    bp.nest(nested_bp);
+
     bp
 }
 
